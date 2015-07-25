@@ -3,14 +3,16 @@
 namespace Entity;
 
 /**
- * @Entity @Table(name="products")
+ * @Entity 
+ * @Table(name="products")
  **/
 class Product {
 
     /**
      * @Id 
      * @Column(type="integer") 
-     * @GeneratedValue(strategy="AUTO")
+     * @GeneratedValue(strategy="SEQUENCE")
+     * @SequenceGenerator(sequenceName="product_id_seq", initialValue=1, allocationSize=100)
      **/
     protected $id;
 
@@ -19,6 +21,10 @@ class Product {
      **/
     protected $name;
 
+    function setId($id) {
+        $this->id = $id;
+    }
+    
     public function getId() {
         return $this->id;
     }
