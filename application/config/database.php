@@ -64,6 +64,23 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+/**
+ * para my sql
+* $db['default']['hostname'] = 'localhost';
+*$db['default']['username'] = 'root';
+*$db['default']['password'] = '';
+*$db['default']['database'] = 'beimar';
+*$db['default']['dbdriver'] = 'mysql';
+ */
+
+/**
+ * para postgresql
+* $db['default']['hostname'] = 'localhost';
+*$db['default']['username'] = 'postgres';
+*$db['default']['password'] = 'postgresql';
+*$db['default']['database'] = 'repo';
+*$db['default']['dbdriver'] = 'postgre';
+ */
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

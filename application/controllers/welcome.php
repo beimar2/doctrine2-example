@@ -36,7 +36,8 @@ class Welcome extends CI_Controller {
 
     public function crearProducto() {
         $product = new \Entity\Product();
-        $product->setName('beimar');
+        //$product->setId(1);
+        $product->setName('jhon');
 
         $this->em->persist($product);
         $this->em->flush();

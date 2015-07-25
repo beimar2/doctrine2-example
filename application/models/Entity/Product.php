@@ -10,9 +10,9 @@ class Product {
 
     /**
      * @Id 
-     * @Column(type="integer") 
-     * @GeneratedValue(strategy="SEQUENCE")
-     * @SequenceGenerator(sequenceName="product_id_seq", initialValue=1, allocationSize=100)
+     * @Column(type="integer")
+     * @GeneratedValue(strategy = "AUTO")
+     * @SequenceGenerator(sequenceName = "products_id_seq") 
      **/
     protected $id;
 
