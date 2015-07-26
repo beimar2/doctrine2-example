@@ -26,7 +26,8 @@ class Welcome extends CI_Controller {
         $this->load->library('doctrine');
         $this->em = $this->doctrine->em;
 
-        $this->encontrarUsuarioYSusComentarios();
+        $this->agregarUnComentarioAUsuarioExistente();
+        //$this->encontrarUsuarioYSusComentarios();
         //$this->agregarComentarios();
         //$this->crearProducto();
         //$this->insertarUsuario();
@@ -40,8 +41,22 @@ class Welcome extends CI_Controller {
         $this->load->view('welcome_message');
     }
     
+    public function agregarUnComentarioAUsuarioExistente() {
+        $user = $this->em->find('Entity\User', 26);
+        if($user) {
+            echo 'El usuario :'.$user->getLogin().' Hizo :'.$user->getComments()->count().' Comentarios';
+            $comment = new \Entity\Comment("HOla como estan, me siento feliz");
+            $comment->setUser($user);
+            $this->em->persist($comment);
+            $this->em->flush();
+        } else {
+            echo 'No existe ese usuario';
+        }
+    }
+
+
     public function encontrarUsuarioYSusComentarios() {
-        $user = $this->em->find('Entity\User',1);
+        $user = $this->em->find('Entity\User',10);
         
         if($user) {
             //siempre utilizar de esta manera(concatenando) nunca dentro de comillas dobles
