@@ -25,8 +25,8 @@ class Welcome extends CI_Controller {
     public function index() {
         $this->load->library('doctrine');
         $this->em = $this->doctrine->em;
-
-        $this->agregarUnComentarioAUsuarioExistente();
+        $this->eliminarComentariodeUnUsuario();
+        //$this->agregarUnComentarioAUsuarioExistente();
         //$this->encontrarUsuarioYSusComentarios();
         //$this->agregarComentarios();
         //$this->crearProducto();
@@ -41,6 +41,22 @@ class Welcome extends CI_Controller {
         $this->load->view('welcome_message');
     }
     
+    public function eliminarComentariodeUnUsuario() {
+        $user = $this->em->find('Entity\User',26);
+        
+        if($user) {
+            echo 'El usuario:', $user->getLogin().' tiene :' .$user->getComments()->count();
+            if($comment = $user->getComments()->first()) {
+                echo 'El comentario: '. $comment->getId(). 'sera eliminado';
+                $this->em->remove($comment);
+                $this->em->flush();
+            }
+        } else {
+            echo 'No existe el usuario';
+        }
+    }
+
+
     public function agregarUnComentarioAUsuarioExistente() {
         $user = $this->em->find('Entity\User', 26);
         if($user) {
