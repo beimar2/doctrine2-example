@@ -26,7 +26,8 @@ class Welcome extends CI_Controller {
         $this->load->library('doctrine');
         $this->em = $this->doctrine->em;
 
-        $this->agregarComentarios();
+        $this->encontrarUsuarioYSusComentarios();
+        //$this->agregarComentarios();
         //$this->crearProducto();
         //$this->insertarUsuario();
         //$this->encontrar();
@@ -37,6 +38,25 @@ class Welcome extends CI_Controller {
         //$datos = array('nombre' => 'Beimar', 'Apellido' => 'Huarachi');
 
         $this->load->view('welcome_message');
+    }
+    
+    public function encontrarUsuarioYSusComentarios() {
+        $user = $this->em->find('Entity\User',1);
+        
+        if($user) {
+            //siempre utilizar de esta manera(concatenando) nunca dentro de comillas dobles
+            echo 'El Usuario:'. $user->getId().' con login :'. $user->getLogin().'<br>';
+            echo 'Hizo los siguientes comentarios: <br>';
+           
+            foreach ($user->getComments() as $comment) {
+                echo 'Id de comentario :'. $comment->getId() . '<br> Comentario <br>' .
+                    $comment->getContent().'<br>';
+               
+                
+            }
+        } else {
+            echo 'NO existe ese usuario';
+        }
     }
 
     public function agregarComentarios() {
@@ -53,10 +73,11 @@ class Welcome extends CI_Controller {
         
         /**
          * se tiene que guardar todas las que estan en la coleccion o va a dar error
-         * O buscar algo con cascade
+         * O buscar algo con cascade(ej: cascade={"persist"}) esto hace todas las in
+         * incersiones automaticamente
          */
-        $this->em->persist($comment);
-        $this->em->persist($comment2);
+        //$this->em->persist($comment);
+        //$this->em->persist($comment2);
         
         
         

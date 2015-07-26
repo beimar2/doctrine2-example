@@ -28,7 +28,7 @@ class User {
     private $login;
     
     /**
-     * @OneToMany(targetEntity="Entity\Comment", mappedBy="user")
+     * @OneToMany(targetEntity="Entity\Comment", mappedBy="user", cascade={"persist"})
      * @var collection 
      */
     private $comments;
