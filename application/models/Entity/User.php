@@ -9,7 +9,7 @@ namespace Entity;
 
 /**
  * @Entity
- * @Table(name="user")
+ * @Table(name="userapp")
  */
 class User {
     
@@ -17,7 +17,7 @@ class User {
      * @Id
      * @Column(type="integer")
      * @GeneratedValue(strategy="AUTO")
-     * @var integer 
+     * @SequenceGenerator(sequenceName="user_id_seq")
      */
     private $id;
     

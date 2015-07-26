@@ -15,13 +15,13 @@ class Comment {
      * @Id
      * @Column(type="integer")
      * @GeneratedValue(strategy="AUTO")
+     * @SequenceGenerator(sequenceName="comment_id_seq")
      * @var integer 
      */
     private $id;
     
     /**
      * @Column(type="string")
-     * @var string 
      */
     private $content;
     

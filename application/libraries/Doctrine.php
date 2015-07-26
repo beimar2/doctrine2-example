@@ -19,7 +19,7 @@ class Doctrine
         //para postgres : pdo_pgsql
         //para mysql : pdo_mysql
         $connection_options = array(
-            'driver'        => 'pdo_mysql',
+            'driver'        => 'pdo_pgsql',
             'user'          => $db['default']['username'],
             'password'      => $db['default']['password'],
             'host'          => $db['default']['hostname'],

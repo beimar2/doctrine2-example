@@ -40,11 +40,13 @@ class Welcome extends CI_Controller {
     }
 
     public function agregarComentarios() {
-        $user = new \Entity\User("irma");
+        $user = new \Entity\User("beimar huarachi");
+        
+        
         $this->em->persist($user);
         
-        $comment = new Entity\Comment("yo soy irma");
-        $comment2 = new Entity\Comment("tienen derecho a pensar diferente");
+        $comment = new Entity\Comment("yo soy beimar huarachi");
+        $comment2 = new Entity\Comment("todos a la miercole");
         
         $user->addComment($comment);
         $user->addComment($comment2);
