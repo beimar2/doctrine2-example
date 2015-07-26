@@ -14,11 +14,12 @@ class Usuario
      * @Id
      * @Column(type="integer")
      * @GeneratedValue(strategy="AUTO")
+     * @SequenceGenerator(sequenceName="usuario_id_seq")
      */
     protected $id;
 
     /**
-     * @Column(type="string", length=2)
+     * @Column(type="string")
      */
     protected $username;
 

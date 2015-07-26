@@ -16,8 +16,10 @@ class Doctrine
         // Load the database configuration from CodeIgniter
         require APPPATH . 'config/database.php';
 
+        //para postgres : pdo_pgsql
+        //para mysql : pdo_mysql
         $connection_options = array(
-            'driver'        => 'pdo_pgsql',
+            'driver'        => 'pdo_mysql',
             'user'          => $db['default']['username'],
             'password'      => $db['default']['password'],
             'host'          => $db['default']['hostname'],

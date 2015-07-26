@@ -68,7 +68,12 @@
 
 <div id="container">
 	<h1>Welcome to CodeIgniter!</h1>
-
+        <div>
+            <label></label>
+            
+            
+        </div>
+        
 	<div id="body">
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 
@@ -82,6 +87,7 @@
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
+        <?php echo CI_VERSION?>
 </div>
 
 </body>

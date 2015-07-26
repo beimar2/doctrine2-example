@@ -26,12 +26,50 @@ class Welcome extends CI_Controller {
         $this->load->library('doctrine');
         $this->em = $this->doctrine->em;
 
-        $this->crearProducto();
+        $this->agregarComentarios();
+        //$this->crearProducto();
         //$this->insertarUsuario();
         //$this->encontrar();
         //$this->hacerConsulta();
         //$this->repositorio();
+        //$data['title'] = 'Tutorial';
+        //$data['heading'] = "My Real Heading";
+        //$datos = array('nombre' => 'Beimar', 'Apellido' => 'Huarachi');
+
         $this->load->view('welcome_message');
+    }
+
+    public function agregarComentarios() {
+        $user = new \Entity\User("irma");
+        $this->em->persist($user);
+        
+        $comment = new Entity\Comment("yo soy irma");
+        $comment2 = new Entity\Comment("tienen derecho a pensar diferente");
+        
+        $user->addComment($comment);
+        $user->addComment($comment2);
+        
+        /**
+         * se tiene que guardar todas las que estan en la coleccion o va a dar error
+         * O buscar algo con cascade
+         */
+        $this->em->persist($comment);
+        $this->em->persist($comment2);
+        
+        
+        
+        $this->em->flush();
+    }
+
+    public function dismount($object) {
+        $reflectionClass = new ReflectionClass(get_class($object));
+        $array = array();
+        foreach ($reflectionClass->getProperties() as $property) {
+            $property->setAccessible(true);
+            $array[$property->getName()] = $property->getValue($object);
+            $property->setAccessible(false);
+        }
+        return $array;
     }
 
     public function crearProducto() {
@@ -51,17 +89,18 @@ class Welcome extends CI_Controller {
     }
 
     public function hacerConsulta() {
-        $consulta = "SELECT * FROM Usuario";
+        $consulta = "SELECT p.id, p.name FROM Entity\Product p";
         $query = $this->em->createQuery($consulta);
         $query->setMaxResults(1);
-        $usuario = $query->getResult();
+        $product = $query->getResult();
+        return $product;
     }
 
     public function repositorio() {
         $repUsuario = $this->em->getRepository('Entity\Usuario');
 
 
-        $usuario = $repUsuario->findOneById('1');//puedes colocar el que se quiera
+        $usuario = $repUsuario->findOneById('1'); //puedes colocar el que se quiera
         $nombreUsuario = '';
         if (!is_null($usuario)) {
             $nombreUsuario = $usuario->getEmail();
