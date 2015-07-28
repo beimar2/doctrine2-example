@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 /**
- * Description of Comment
+ * Ejemplo de relacion one-to-many bidireccional junto con User
  *
  * @author Beimar
  */
@@ -27,7 +27,7 @@ class Comment {
     
     /**
      * @ManyToOne(targetEntity="Entity\User", inversedBy="comments")
-     * @var Entity\User 
+     * @JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
     

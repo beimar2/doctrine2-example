@@ -2,7 +2,7 @@
 namespace Entity;
 
 /**
- * Description of User
+ * Ejemplo de relacion one-to-many bidireccional junto con "Comment"
  *
  * @author Beimar
  */
@@ -28,8 +28,7 @@ class User {
     private $login;
     
     /**
-     * @OneToMany(targetEntity="Entity\Comment", mappedBy="user", cascade={"persist"})
-     * @var collection 
+     * @OneToMany(targetEntity="Entity\Comment", mappedBy="user")
      */
     private $comments;
     
@@ -38,7 +37,7 @@ class User {
         $this->login = $login;
     }
     
-    public function addComment(Comment $comment) {
+    public function addComment($comment) {
         $this->comments->add($comment);
         $comment->setUser($this);
     }
@@ -63,7 +62,7 @@ class User {
         $this->login = $login;
     }
 
-    function setComments(collection $comments) {
+    function setComments($comments) {
         $this->comments = $comments;
     }
 
