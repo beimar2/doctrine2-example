@@ -1,0 +1,32 @@
+Comment:
+    type: entity
+    table: comment
+    indexes:
+        IDX_9474526CA76ED395:
+            columns:
+                - user_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        content:
+            type: string
+            nullable: true
+            length: 100
+            fixed: true
+    manyToOne:
+        user:
+            targetEntity: Userapp
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

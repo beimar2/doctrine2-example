@@ -1,0 +1,21 @@
+Event:
+    type: entity
+    table: event
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        timezone:
+            type: string
+            nullable: true
+            length: 60
+            fixed: true
+        created:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks: {  }

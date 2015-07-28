@@ -1,0 +1,35 @@
+Teacher:
+    type: entity
+    table: teacher
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 60
+            fixed: true
+    manyToMany:
+        course:
+            targetEntity: Course
+            cascade: {  }
+            mappedBy: null
+            inversedBy: teacher
+            joinTable:
+                name: teachers_courses
+                joinColumns:
+                    -
+                        name: teacher_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: course_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

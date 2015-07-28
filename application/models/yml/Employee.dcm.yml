@@ -1,0 +1,35 @@
+Employee:
+    type: entity
+    table: employee
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 60
+            fixed: true
+    manyToMany:
+        friendEmployee:
+            targetEntity: Employee
+            cascade: {  }
+            mappedBy: null
+            inversedBy: employee
+            joinTable:
+                name: friends
+                joinColumns:
+                    -
+                        name: employee_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: friend_employee_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

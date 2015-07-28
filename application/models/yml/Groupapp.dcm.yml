@@ -1,0 +1,26 @@
+Groupapp:
+    type: entity
+    table: groupapp
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 60
+            fixed: true
+    manyToMany:
+        person:
+            targetEntity: Person
+            cascade: {  }
+            mappedBy: group
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

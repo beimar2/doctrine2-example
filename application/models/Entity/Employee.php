@@ -29,7 +29,8 @@ class Employee {
     
     /**
      * @ManyToMany(targetEntity="Entity\Employee", mappedBy="myFriends")
-     * @var ArrayCollection 
+     * @var ArrayCollection
+     * quienes me han agregado como amigos 
      */
     private $friendsWithMe;
     
@@ -39,6 +40,7 @@ class Employee {
      * joinColumns={@JoinColumn(name="employee_id", referencedColumnName="id")},
      * inverseJoinColumns={@JoinColumn(name="friend_employee_id", referencedColumnName="id")})
      * @var ArrayCollection 
+     * los amigos que yo he agregado
      */
     private $myFriends;
     

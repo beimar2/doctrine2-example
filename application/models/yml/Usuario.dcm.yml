@@ -1,0 +1,43 @@
+Usuario:
+    type: entity
+    table: usuario
+    indexes:
+        IDX_2265B05DF5B7AF75:
+            columns:
+                - address_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        username:
+            type: string
+            nullable: true
+            length: 50
+            fixed: true
+        password:
+            type: string
+            nullable: true
+            length: 50
+            fixed: true
+        email:
+            type: string
+            nullable: true
+            length: 50
+            fixed: true
+            comment: "\n"
+    manyToOne:
+        address:
+            targetEntity: Address
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                address_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

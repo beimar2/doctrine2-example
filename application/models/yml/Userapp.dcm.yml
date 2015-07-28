@@ -1,0 +1,18 @@
+Userapp:
+    type: entity
+    table: userapp
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        login:
+            type: string
+            nullable: true
+            length: 50
+            fixed: true
+    lifecycleCallbacks: {  }

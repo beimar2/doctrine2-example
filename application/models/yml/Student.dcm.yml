@@ -1,0 +1,32 @@
+Student:
+    type: entity
+    table: student
+    uniqueConstraints:
+        Uni:
+            columns:
+                - mentor_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 60
+            fixed: true
+    manyToOne:
+        mentor:
+            targetEntity: Student
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                mentor_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,32 @@
+Category:
+    type: entity
+    table: category
+    indexes:
+        IDX_64C19C1727ACA70:
+            columns:
+                - parent_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 50
+            fixed: true
+    manyToOne:
+        parent:
+            targetEntity: Category
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

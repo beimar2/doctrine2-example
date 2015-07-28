@@ -1,0 +1,18 @@
+Address:
+    type: entity
+    table: address
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        street:
+            type: string
+            nullable: true
+            length: 50
+            fixed: true
+    lifecycleCallbacks: {  }
