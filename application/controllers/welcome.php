@@ -26,7 +26,9 @@ class Welcome extends CI_Controller {
         $this->load->library('doctrine');
         $this->em = $this->doctrine->em;
         
-        $this->importarEntidadesDeBD();
+        $this->crearEsquema();
+        //$this->addCar();
+        //$this->importarEntidadesDeBD();
         //$this->crearEsquema();
         //$this->addEmployeeFriends();
         //$this->addTeacherToCourse();
@@ -54,6 +56,14 @@ class Welcome extends CI_Controller {
 
         $this->load->view('welcome_message');
     }
+
+    public function addCar() {
+        $car = new \Entity\Car("Suzuki", 2000);
+        
+        $this->em->persist($car);
+        $this->em->flush();
+    }
+
 
     /**
      * a partir de la base de datos, nos genera las entidades
@@ -84,14 +94,15 @@ class Welcome extends CI_Controller {
         $tool = new \Doctrine\ORM\Tools\SchemaTool($this->em);
         //puede recibir varias clases y generarlas
         $classes = array(
-            $this->em->getClassMetadata('Entity\University')
+            $this->em->getClassMetadata('Entity\Article'),
+            $this->em->getClassMetadata('Entity\ArticleAttribute')
         );
 
         try {
             //para crear el esquema
-            //$tool->createSchema($classes);
+            $tool->createSchema($classes);
             //para borrar el esquema
-            $tool->dropSchema($classes);
+            //$tool->dropSchema($classes);
 
             //para borrrar todas las tablas y toda la base de datos
             //$tool->dropSchema($classes, \Doctrine\ORM\Tools\SchemaTool::DROP_DATABASE);

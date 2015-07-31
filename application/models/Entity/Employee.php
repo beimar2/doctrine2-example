@@ -3,7 +3,7 @@ namespace Entity;
 
 /**
  * Ejemplo de relacion many-to-many Recursivo
- *
+ * Un empleado puede tener varios amigos y un amigo puede tener varios empleados(empleado)
  * @author Beimar
  */
 
